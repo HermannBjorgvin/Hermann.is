@@ -1,21 +1,21 @@
 // parts/helper
 
-// Various helper functions for arithmatic and what not
+// Various helper functions for grid arithmatic and what not
 
 define([
 	'jquery',
 	'underscore'
 ], function($, _){
 
-	var helper = {};
+	var gridHelper = {};
 
 	// Test if object is working
-	helper.test = function(){
+	gridHelper.test = function(){
 		console.log('Beware, this is just a test');
 	};
 
 	// Return a random unit vector
-	helper.unitVector = function(){
+	gridHelper.unitVector = function(){
 		var radian = Math.random() * 2 * Math.PI - Math.PI;
 
 		return {
@@ -25,7 +25,7 @@ define([
 	};
 
 	// Help with grid coordinates
-	helper.grid = {
+	gridHelper.grid = {
 		// Return X from index
 		getXFromIndex: function(index, width){
 			return index % width;
@@ -42,14 +42,14 @@ define([
 		}
 	};
 
-	helper.pythagorasDistance = function(coords1, coords2){
+	gridHelper.pythagorasDistance = function(coords1, coords2){
 		return Math.sqrt(
 			Math.pow(coords1.x - coords2.x, 2) +
 			Math.pow(coords1.y - coords2.y, 2)
 		);
 	};
 
-	helper.cellConstructor = function(x, y, index, parent, level){
+	gridHelper.cellConstructor = function(x, y, index, parent, level){
 		this.x = x;
 		this.y = y;
 		this.index = index;
@@ -58,7 +58,7 @@ define([
 		this.level = level;
 	}
 
-	helper.getNeighboorsFromIndex = function(index, width, height){
+	gridHelper.getNeighboorsFromIndex = function(index, width, height){
 		var neighboorsArray = [];
 
 		// If statements for:
@@ -101,5 +101,5 @@ define([
 		return neighboorsArray;
 	}
 
-	return helper;
+	return gridHelper;
 });
